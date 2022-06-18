@@ -22,16 +22,16 @@ import java.util.Objects;
 @Component
 public class DataSourceAspect {
 
-    @Pointcut("@annotation(cn.flowboot.multisource.source.MyDataSource)"
-            +"||@within(cn.flowboot.multisource.source.MyDataSource)")
+    @Pointcut("@annotation(cn.flowboot.multisource.source.MultipleDataSource)"
+            +"||@within(cn.flowboot.multisource.source.MultipleDataSource)")
     public void myDS(){};
 
     @Around("myDS()")
     public Object around(ProceedingJoinPoint point)throws Throwable {
         MethodSignature signature = (MethodSignature)point.getSignature();
-        MyDataSource myDataSource = AnnotationUtils.findAnnotation(signature.getMethod(), MyDataSource.class);
-        if(Objects.nonNull(myDataSource)){
-            DynamicMultipleDataSourceContextHolder.setDataSourceName(myDataSource.dataSourceName());
+        MultipleDataSource multipleDataSource = AnnotationUtils.findAnnotation(signature.getMethod(), MultipleDataSource.class);
+        if(Objects.nonNull(multipleDataSource)){
+            DynamicMultipleDataSourceContextHolder.setDataSourceName(multipleDataSource.dataSourceName());
         }
         try{
             return point.proceed();

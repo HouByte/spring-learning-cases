@@ -1,18 +1,18 @@
 package cn.flowboot.multisource.source;
 
-/**
- * <h1>动态使用数据源</h1>
- *
- * @author Vincent Vic
- * @version 1.0
- */
+
 
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 
 import java.util.HashMap;
 import java.util.Map;
 
-
+/**
+ * <h1>动态使用数据源</h1>
+ *
+ * @author Vincent Vic
+ * @version 1.0
+ */
 public class DynamicMultipleDataSource extends AbstractRoutingDataSource {
     //实际数据源提供者
     private YmlMultipleDataSourceProvider ymlMultipleDataSourceProvider;

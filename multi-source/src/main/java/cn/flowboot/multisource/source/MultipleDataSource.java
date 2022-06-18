@@ -16,7 +16,7 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.METHOD,ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface MyDataSource {
+public @interface MultipleDataSource {
 
     String dataSourceName() default MultipleDataSourceProvider.DEFAULT_DATASOURCE;
 

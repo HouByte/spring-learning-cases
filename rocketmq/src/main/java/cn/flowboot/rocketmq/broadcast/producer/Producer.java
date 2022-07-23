@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * <h1></h1>
  *
- * @author hougq
+ * @author Vincent Vic
  * @version 1.0
  */
 public class Producer {

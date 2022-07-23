@@ -8,7 +8,7 @@ import org.apache.rocketmq.remoting.common.RemotingHelper;
 /**
  * <h1></h1>
  *
- * @author hougq
+ * @author Vincent Vic
  * @version 1.0
  */
 public class ProducerSync {

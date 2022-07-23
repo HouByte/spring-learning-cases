@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * <h1>广播消息消费者</h1>
  *
- * @author hougq
+ * @author Vincent Vic
  * @version 1.0
  */
 public class ConsumerB {

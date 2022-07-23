@@ -10,9 +10,9 @@ import org.apache.rocketmq.remoting.common.RemotingHelper;
 import java.util.List;
 
 /**
- * <h1></h1>
+ * <h1>顺序消息 - 生产者</h1>
  *
- * @author hougq
+ * @author Vincent Vic
  * @version 1.0
  */
 public class Producer {

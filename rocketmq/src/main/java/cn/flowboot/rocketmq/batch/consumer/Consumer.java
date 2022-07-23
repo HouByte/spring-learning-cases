@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * <h1>批量消息消费者</h1>
  *
- * @author hougq
+ * @author Vincent Vic
  * @version 1.0
  */
 public class Consumer {

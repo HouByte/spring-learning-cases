@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * <h1>拆分消息工具类</h1>
  *
- * @author hougq
+ * @author Vincent Vic
  * @version 1.0
  */
 public class ListSplitter implements Iterator<List<Message>> {

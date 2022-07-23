@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * <h1>延迟消息生产者</h1>
  *
- * @author hougq
+ * @author Vincent Vic
  * @version 1.0
  */
 public class Producer {

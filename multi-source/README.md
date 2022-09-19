@@ -297,8 +297,9 @@ public interface MultipleDataSourceProvider {
 }
 ```
 YmlMultipleDataSourceProvider  多数据源提供者Yaml实现
+
 ```java
-import cn.flowboot.multisource.config.MultipleDSConfiguration;
+import MultipleDSConfiguration;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.pool.DruidDataSourceFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -317,20 +318,20 @@ import java.util.Map;
  */
 @Component
 @Configuration
-public class YmlMultipleDataSourceProvider implements MultipleDataSourceProvider{
+public class YmlMultipleDataSourceProvider implements MultipleDataSourceProvider {
     @Autowired
     private MultipleDSConfiguration multipleDSConfiguration;
 
     @Override
     public Map<String, DataSource> loadDataSource() {
         Map<String, Map<String, String>> myDS = multipleDSConfiguration.getDs();
-        Map<String,DataSource> map = new HashMap<>(myDS.size());
-        try{
-            for (String key: myDS.keySet()){
+        Map<String, DataSource> map = new HashMap<>(myDS.size());
+        try {
+            for (String key : myDS.keySet()) {
                 DruidDataSource druidDataSource = (DruidDataSource) DruidDataSourceFactory.createDataSource(myDS.get(key));
-                map.put(key,multipleDSConfiguration.dataSource(druidDataSource));
+                map.put(key, multipleDSConfiguration.dataSource(druidDataSource));
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return map;
@@ -410,9 +411,12 @@ public @interface MultipleDataSource {
 ```
 ## 3.7 解析自定义注解
 DataSourceAspect  通过AOP来解析该自定义注解
+
 ```java
 package cn.flowboot.multisource.source;
 
+import cn.meshed.multisource.source.DynamicMultipleDataSourceContextHolder;
+import cn.meshed.multisource.source.MultipleDataSource;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -435,18 +439,21 @@ import java.util.Objects;
 @Component
 public class DataSourceAspect {
 
-    @Pointcut("@annotation(cn.flowboot.multisource.source.MultipleDataSource)"
-            +"||@within(cn.flowboot.multisource.source.MultipleDataSource)")
-    public void myDS(){};
+    @Pointcut("@annotation(MultipleDataSource)"
+            + "||@within(MultipleDataSource)")
+    public void myDS() {
+    }
+
+    ;
 
     @Around("myDS()")
-    public Object around(ProceedingJoinPoint point)throws Throwable {
-        MethodSignature signature = (MethodSignature)point.getSignature();
+    public Object around(ProceedingJoinPoint point) throws Throwable {
+        MethodSignature signature = (MethodSignature) point.getSignature();
         MultipleDataSource multipleDataSource = AnnotationUtils.findAnnotation(signature.getMethod(), MultipleDataSource.class);
-        if(Objects.nonNull(multipleDataSource)){
+        if (Objects.nonNull(multipleDataSource)) {
             DynamicMultipleDataSourceContextHolder.setDataSourceName(multipleDataSource.dataSourceName());
         }
-        try{
+        try {
             return point.proceed();
         } finally {
             // 清空数据源
@@ -499,8 +506,8 @@ public class DynamicMultipleDataSource extends AbstractRoutingDataSource {
 将DynamicMultipleDataSource注入到Spring容器中
 
 ```java
-import cn.flowboot.multisource.source.DynamicMultipleDataSource;
-import cn.flowboot.multisource.source.YmlMultipleDataSourceProvider;
+import DynamicMultipleDataSource;
+import YmlMultipleDataSourceProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -517,7 +524,7 @@ public class DynamicMultipleDataSourceConfiguration {
     private YmlMultipleDataSourceProvider provider;
 
     @Bean
-    public DynamicMultipleDataSource dynamicMultipleDataSource(){
+    public DynamicMultipleDataSource dynamicMultipleDataSource() {
         return new DynamicMultipleDataSource(provider);
     }
 }

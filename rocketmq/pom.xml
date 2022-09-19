@@ -9,7 +9,7 @@
         <groupId>org.springframework.boot</groupId>
         <version>2.6.3</version>
     </parent>
-    <groupId>cn.flowboot</groupId>
+    <groupId>cn.meshed.rocketmq</groupId>
     <artifactId>rocketmq</artifactId>
     <version>1.0-SNAPSHOT</version>
 

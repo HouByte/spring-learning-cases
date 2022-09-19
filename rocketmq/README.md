@@ -918,10 +918,11 @@ public class ListSplitter implements Iterator<List<Message>> {
 }
 ```
 #### 6.3.1 生产者
+
 ```java
 package cn.flowboot.rocketmq.batch.splitter.producer;
 
-import cn.flowboot.rocketmq.batch.splitter.ListSplitter;
+import ListSplitter;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.common.message.Message;

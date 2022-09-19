@@ -8,7 +8,7 @@
         <version>2.7.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>cn.flowboot</groupId>
+    <groupId>cn.meshed.multisource</groupId>
     <artifactId>multi-source</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>multi-source</name>
